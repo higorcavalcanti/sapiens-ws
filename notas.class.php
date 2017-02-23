@@ -45,7 +45,7 @@ class Notas {
 			$element = $materia['table']->getElementsByTagName('tr');
 			$this->notas[$index] = array(
 				'nome' => trim($element->item($INDEX_NOME[0])->getElementsByTagName('td')->item($INDEX_NOME[1])->nodeValue),
-				'alteracao' => trim(explode(':', $element->item($INDEX_ALTERACAO[0])->getElementsByTagName('td')->item($INDEX_ALTERACAO[1])->nodeValue)[1]),
+				'alteracao' => $this->alteracao( $element->item($INDEX_ALTERACAO[0])->getElementsByTagName('td')->item($INDEX_ALTERACAO[1])->nodeValue ),
 				'calculo' => trim(explode(':', $element->item($INDEX_CALCULO[0])->getElementsByTagName('td')->item($INDEX_CALCULO[1])->nodeValue)[1])
 			);
 			$this->parseNotas( $this->notas[$index], $element->item($INDEX_TABLE_TITULO), $element->item($INDEX_TABLE_VALOR)); 
@@ -94,6 +94,13 @@ class Notas {
 			'praticas' => $valores->getElementsByTagName('td')->item($INDEX_FALTAS_PRATICAS)->nodeValue,
 		);
 		//var_dump($materia['faltas']);
+	}
+	
+	
+	
+	private function alteracao($valor) {
+		$v = explode(':', $valor);
+		return "{$v[1]}:{$v[2]}";
 	}
 }
 ?> 
