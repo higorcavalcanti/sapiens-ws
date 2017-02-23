@@ -9,8 +9,8 @@ class Sapiens {
 		curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($this->curl, CURLOPT_ENCODING, 'UTF-8');
-		curl_setopt($this->curl, CURLOPT_FRESH_CONNECT, TRUE);
-		curl_setopt($this->curl, CURLOPT_VERBOSE, true);
+		//curl_setopt($this->curl, CURLOPT_FRESH_CONNECT, TRUE);
+		//curl_setopt($this->curl, CURLOPT_VERBOSE, true);
 
 	}
 	
