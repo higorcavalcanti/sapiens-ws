@@ -44,9 +44,9 @@ class Notas {
 		foreach($this->notas as $index => $materia) {
 			$element = $materia['table']->getElementsByTagName('tr');
 			$this->notas[$index] = array(
-				'nome' => trim($element->item($INDEX_NOME[0])->getElementsByTagName('td')->item($INDEX_NOME[1])->nodeValue),
+				'nome' => nTrim($element->item($INDEX_NOME[0])->getElementsByTagName('td')->item($INDEX_NOME[1])->nodeValue),
 				'alteracao' => $this->alteracao( $element->item($INDEX_ALTERACAO[0])->getElementsByTagName('td')->item($INDEX_ALTERACAO[1])->nodeValue ),
-				'calculo' => trim(explode(':', $element->item($INDEX_CALCULO[0])->getElementsByTagName('td')->item($INDEX_CALCULO[1])->nodeValue)[1])
+				'calculo' => nTrim(explode(':', $element->item($INDEX_CALCULO[0])->getElementsByTagName('td')->item($INDEX_CALCULO[1])->nodeValue)[1])
 			);
 			$this->parseNotas( $this->notas[$index], $element->item($INDEX_TABLE_TITULO), $element->item($INDEX_TABLE_VALOR)); 
 			$this->parseFaltas( $this->notas[$index], $element->item($INDEX_TABLE_TITULO), $element->item($INDEX_TABLE_VALOR)); 
@@ -102,5 +102,9 @@ class Notas {
 		$v = explode(':', $valor);
 		return "{$v[1]}:{$v[2]}";
 	}
+}
+
+function nTrim($str) {
+	return trim($str, chr(0xC2).chr(0xA0));
 }
 ?> 
