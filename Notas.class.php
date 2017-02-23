@@ -64,10 +64,10 @@ class Notas {
 		$INDEX_NOTA_FINAL = 9;
 		$INDEX_CONCEITO = 12;
 		
-		$materia['notas']['total'] = $valores->getElementsByTagName('td')->item($INDEX_NOTA_TOTAL)->nodeValue;
-		$materia['notas']['exame'] = $valores->getElementsByTagName('td')->item($INDEX_EXAME_FINAL)->nodeValue;
-		$materia['notas']['final'] = $valores->getElementsByTagName('td')->item($INDEX_NOTA_FINAL)->nodeValue;
-		$materia['notas']['conceito'] = $valores->getElementsByTagName('td')->item($INDEX_CONCEITO)->nodeValue;
+		$materia['nota']['total'] = $valores->getElementsByTagName('td')->item($INDEX_NOTA_TOTAL)->nodeValue;
+		$materia['nota']['exame'] = $valores->getElementsByTagName('td')->item($INDEX_EXAME_FINAL)->nodeValue;
+		$materia['nota']['final'] = $valores->getElementsByTagName('td')->item($INDEX_NOTA_FINAL)->nodeValue;
+		$materia['nota']['conceito'] = $valores->getElementsByTagName('td')->item($INDEX_CONCEITO)->nodeValue;
 		
 		for($i = 0; $i < $MAX_NOTAS_PARCIAIS; $i++) {
 			$titulo = $titulos->getElementsByTagName('td')->item($i);
@@ -75,7 +75,7 @@ class Notas {
 			
 			if(strlen($titulo->nodeValue) == $NODEVALUE_EMPTY_LENGTH) continue;
 		
-			$materia['notas'][] = array(
+			$materia['nota']['notas'][] = array(
 				'nome' => trim(explode(':', $titulo->nodeValue)[0]),
 				'max' => $titulo->getElementsByTagName('b')->item(0)->nodeValue,
 				'valor' => $valor->nodeValue
