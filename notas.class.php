@@ -45,7 +45,7 @@ class Notas {
 			$element = $materia['table']->getElementsByTagName('tr');
 			$this->notas[$index] = array(
 				'nome' => trim($element->item($INDEX_NOME[0])->getElementsByTagName('td')->item($INDEX_NOME[1])->nodeValue),
-				'alteracao' => trim($element->item($INDEX_ALTERACAO[0])->getElementsByTagName('td')->item($INDEX_ALTERACAO[1])->nodeValue),
+				'alteracao' => trim(explode(':', $element->item($INDEX_ALTERACAO[0])->getElementsByTagName('td')->item($INDEX_ALTERACAO[1])->nodeValue)[1]),
 				'calculo' => trim(explode(':', $element->item($INDEX_CALCULO[0])->getElementsByTagName('td')->item($INDEX_CALCULO[1])->nodeValue)[1])
 			);
 			$this->parseNotas( $this->notas[$index], $element->item($INDEX_TABLE_TITULO), $element->item($INDEX_TABLE_VALOR)); 
